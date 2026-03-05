@@ -8,4 +8,6 @@ import java.util.Optional;
 
 public interface CourseRepository extends CrudRepository<Course, Long> {
     List<Course> findByName(String name);
+
+    List<Course> findByProfessor_NameOrderByName(String name);
 }

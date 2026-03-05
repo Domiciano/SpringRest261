@@ -1,5 +1,6 @@
 package edu.co.icesi.introspringboot.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import java.util.List;
 
@@ -14,6 +15,7 @@ public class Professor {
     private String name;
 
     @OneToMany(mappedBy = "professor")
+    @JsonIgnore
     private List<Course> courses;
 
     public Integer getId() { return id; }

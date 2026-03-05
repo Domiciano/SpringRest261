@@ -1,5 +1,6 @@
 package edu.co.icesi.introspringboot.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import java.util.List;
 
@@ -18,6 +19,7 @@ public class Student {
     private String program;
 
     @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
     private List<Enrollment> enrollments;
 
     public Student() {}

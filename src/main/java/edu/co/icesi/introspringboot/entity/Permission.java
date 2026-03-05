@@ -1,5 +1,6 @@
 package edu.co.icesi.introspringboot.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import java.util.List;
 
@@ -14,6 +15,7 @@ public class Permission {
     private String name;
 
     @OneToMany(mappedBy = "permission", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
     private List<RolePermission> rolePermissions;
 
     public Integer getId() { return id; }
