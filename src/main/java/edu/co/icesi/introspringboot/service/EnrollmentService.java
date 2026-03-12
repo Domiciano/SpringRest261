@@ -34,7 +34,7 @@ public class EnrollmentService {
     @Transactional
     public void enroll(Integer studentId, Integer courseId) {
         Student student = studentRepository.findById(studentId).orElseThrow();
-        Course course = courseRepository.findById(Long.valueOf(courseId)).orElseThrow();
+        Course course = courseRepository.findById(courseId).orElseThrow();
 
         StudentCourseId id = new StudentCourseId();
         id.setStudentId(studentId);
@@ -51,7 +51,7 @@ public class EnrollmentService {
     @Transactional
     public void enrollWithFailure(Integer studentId, Integer courseId) {
         Student student = studentRepository.findById(studentId).orElseThrow();
-        Course course = courseRepository.findById(Long.valueOf(courseId)).orElseThrow();
+        Course course = courseRepository.findById(courseId).orElseThrow();
 
         StudentCourseId id = new StudentCourseId();
         id.setStudentId(studentId);
