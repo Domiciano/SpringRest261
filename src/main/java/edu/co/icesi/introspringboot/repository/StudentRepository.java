@@ -10,9 +10,10 @@ import java.util.Optional;
 @Repository
 public interface StudentRepository extends JpaRepository<Student, Integer> {
 
-    //SELECT * FROM students WHERE code="A00234245"
     Optional<Student> findByCode(String code);
 
     List<Student> findByProgram(String program);
 
+    // Lesson 17: Find students enrolled in a course by course name
+    List<Student> findByEnrollments_Course_Name(String courseName);
 }
