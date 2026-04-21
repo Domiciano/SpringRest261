@@ -151,3 +151,63 @@ INSERT INTO student_course (student_id, course_id) VALUES (3, 7);
 INSERT INTO student_course (student_id, course_id) VALUES (4, 11);
 INSERT INTO student_course (student_id, course_id) VALUES (4, 12);
 INSERT INTO student_course (student_id, course_id) VALUES (5, 6);
+
+INSERT INTO student (name, code, program) VALUES ('Daniel Rojas',      '2021102006', 'Ingenieria de Sistemas');
+INSERT INTO student (name, code, program) VALUES ('Valentina Cruz',    '2021102007', 'Ingenieria de Sistemas');
+INSERT INTO student (name, code, program) VALUES ('Sebastian Mora',    '2021102008', 'Ingenieria Industrial');
+INSERT INTO student (name, code, program) VALUES ('Natalia Herrera',  '2021102009', 'Medicina');
+INSERT INTO student (name, code, program) VALUES ('Juan Esteban Gil', '2021102010', 'Derecho');
+
+INSERT INTO student (name, code, program) VALUES ('Paula Restrepo',   '2021102011', 'Arquitectura');
+INSERT INTO student (name, code, program) VALUES ('Mateo Salazar',    '2021102012', 'Ingenieria Civil');
+INSERT INTO student (name, code, program) VALUES ('Sara Jimenez',     '2021102013', 'Psicologia');
+INSERT INTO student (name, code, program) VALUES ('Felipe Naranjo',   '2021102014', 'Economia');
+INSERT INTO student (name, code, program) VALUES ('Juliana Ruiz',     '2021102015', 'Contaduria');
+
+INSERT INTO student (name, code, program) VALUES ('David Castro',     '2021102016', 'Ingenieria de Sistemas');
+INSERT INTO student (name, code, program) VALUES ('Luisa Fernanda',   '2021102017', 'Medicina');
+INSERT INTO student (name, code, program) VALUES ('Kevin Vargas',     '2021102018', 'Derecho');
+INSERT INTO student (name, code, program) VALUES ('Mariana Pardo',    '2021102019', 'Arquitectura');
+INSERT INTO student (name, code, program) VALUES ('Samuel Cardenas',  '2021102020', 'Ingenieria Industrial');
+
+INSERT INTO student (name, code, program) VALUES ('Isabella Leon',    '2021102021', 'Biologia');
+INSERT INTO student (name, code, program) VALUES ('Nicolas Arias',    '2021102022', 'Quimica');
+INSERT INTO student (name, code, program) VALUES ('Carolina Peña',    '2021102023', 'Fisica');
+INSERT INTO student (name, code, program) VALUES ('Juan Camilo Diaz', '2021102024', 'Matematicas');
+INSERT INTO student (name, code, program) VALUES ('Laura Mendoza',    '2021102025', 'Economia');
+
+INSERT INTO student (name, code, program) VALUES ('Camilo Parra',     '2021102026', 'Ingenieria Civil');
+INSERT INTO student (name, code, program) VALUES ('Gabriela Soto',    '2021102027', 'Psicologia');
+INSERT INTO student (name, code, program) VALUES ('Esteban Molina',   '2021102028', 'Historia');
+INSERT INTO student (name, code, program) VALUES ('Manuela Rico',     '2021102029', 'Filosofia');
+INSERT INTO student (name, code, program) VALUES ('Tomas Ospina',     '2021102030', 'Ingenieria de Sistemas');
+
+INSERT INTO student (name, code, program) VALUES ('Valeria Buitrago', '2021102031', 'Medicina');
+INSERT INTO student (name, code, program) VALUES ('Jeronimo Mejia',   '2021102032', 'Derecho');
+INSERT INTO student (name, code, program) VALUES ('Daniela Roldan',   '2021102033', 'Arquitectura');
+INSERT INTO student (name, code, program) VALUES ('Cristian Mesa',    '2021102034', 'Economia');
+INSERT INTO student (name, code, program) VALUES ('Tatiana Lozano',   '2021102035', 'Contaduria');
+
+INSERT INTO student (name, code, program) VALUES ('Miguel Angel',     '2021102036', 'Ingenieria Industrial');
+INSERT INTO student (name, code, program) VALUES ('Paola Cardona',    '2021102037', 'Biologia');
+INSERT INTO student (name, code, program) VALUES ('Andres Felipe',    '2021102038', 'Quimica');
+INSERT INTO student (name, code, program) VALUES ('Maria Paula',      '2021102039', 'Fisica');
+INSERT INTO student (name, code, program) VALUES ('Santiago Acosta',  '2021102040', 'Matematicas');
+
+INSERT INTO student (name, code, program) VALUES ('Ana Lucia Vega',   '2021102041', 'Ingenieria de Sistemas');
+INSERT INTO student (name, code, program) VALUES ('Jose Manuel',      '2021102042', 'Medicina');
+INSERT INTO student (name, code, program) VALUES ('Laura Sofia',      '2021102043', 'Derecho');
+INSERT INTO student (name, code, program) VALUES ('Martin Yepes',     '2021102044', 'Arquitectura');
+INSERT INTO student (name, code, program) VALUES ('Angela Muñoz',     '2021102045', 'Economia');
+
+INSERT INTO student (name, code, program) VALUES ('Ricardo Trujillo', '2021102046', 'Contaduria');
+INSERT INTO student (name, code, program) VALUES ('Diana Beltran',    '2021102047', 'Psicologia');
+INSERT INTO student (name, code, program) VALUES ('Juan Pablo Niño',  '2021102048', 'Historia');
+INSERT INTO student (name, code, program) VALUES ('Melissa Quintero', '2021102049', 'Filosofia');
+INSERT INTO student (name, code, program) VALUES ('Pipe Valencia',    '2021102050', 'Ingenieria Civil');
+
+INSERT INTO student (name, code, program) VALUES ('Karen Villada',    '2021102051', 'Ingenieria de Sistemas');
+INSERT INTO student (name, code, program) VALUES ('Brayan Osorio',    '2021102052', 'Medicina');
+INSERT INTO student (name, code, program) VALUES ('Salome Duque',     '2021102053', 'Derecho');
+INSERT INTO student (name, code, program) VALUES ('Alejandro Luna',   '2021102054', 'Arquitectura');
+INSERT INTO student (name, code, program) VALUES ('Catalina Hoyos',   '2021102055', 'Economia');
