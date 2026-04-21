@@ -32,7 +32,7 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    @PreAuthorize("hasAnyAuthority('VIEW_STUDENT','VIEW_OWN_STUDENT')")
+    @PreAuthorize("hasAuthority('READ_STUDENT')")
     public Student findStudentByCode(String code) {
         if (code == null || code.isBlank()) {
             throw new IllegalArgumentException("El código no puede ser nulo o vacío");
@@ -42,7 +42,7 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    @PreAuthorize("hasAnyAuthority('VIEW_COURSE_STUDENTS')")
+    @PreAuthorize("hasAuthority('READ_STUDENT')")
     public List<Student> getStudentsByCourseName(String courseName) {
         if (!courseRepository.existsByName(courseName)) {
             throw new RuntimeException("Curso no encontrado: " + courseName);
@@ -61,7 +61,7 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     @Transactional
-    @PreAuthorize("hasAnyAuthority('ENROLL_STUDENT')")
+    @PreAuthorize("hasAuthority('CREATE_ENROLLMENT')")
     public Enrollment enrollStudentInCourse(String studentCode, String courseName) {
         Student student = studentRepository.findByCode(studentCode)
                 .orElseThrow(() -> new RuntimeException("Estudiante no encontrado: " + studentCode));
@@ -82,6 +82,7 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     @Transactional
+    @PreAuthorize("hasAuthority('DELETE_ENROLLMENT')")
     public void unenrollStudentFromCourse(String studentCode, String courseName) {
         Student student = studentRepository.findByCode(studentCode)
                 .orElseThrow(() -> new RuntimeException("Estudiante no encontrado: " + studentCode));
@@ -93,12 +94,13 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
+    @PreAuthorize("hasAuthority('CREATE_STUDENT')")
     public Student save(Student student) {
-        //Validaciones
         return studentRepository.save(student);
     }
 
     @Override
+    @PreAuthorize("hasAuthority('READ_STUDENT')")
     public List<Student> findAll() {
         List<Student> result = new ArrayList<>();
         studentRepository.findAll().forEach(result::add);
@@ -106,11 +108,13 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
+    @PreAuthorize("hasAuthority('READ_STUDENT')")
     public Optional<Student> findById(Integer id) {
         return studentRepository.findById(id);
     }
 
     @Override
+    @PreAuthorize("hasAuthority('DELETE_STUDENT')")
     public void deleteById(Integer id) {
         studentRepository.deleteById(id);
     }

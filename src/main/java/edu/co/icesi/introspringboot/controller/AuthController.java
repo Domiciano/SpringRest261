@@ -33,9 +33,15 @@ public class AuthController {
     }
 
     @PostMapping("/signup")
-    public String signup(@ModelAttribute User user) {
-        userService.save(user);
-        return "redirect:/auth/login";
+    public String signup(@ModelAttribute User user, Model model) {
+        try {
+            userService.save(user);
+            return "redirect:/auth/login?registered";
+        } catch (IllegalArgumentException e) {
+            model.addAttribute("user", user);
+            model.addAttribute("error", e.getMessage());
+            return "auth/signup";
+        }
     }
 
     //My Profile

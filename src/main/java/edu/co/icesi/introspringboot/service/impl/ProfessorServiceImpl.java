@@ -20,12 +20,13 @@ public class ProfessorServiceImpl implements ProfessorService {
     }
 
     @Override
+    @PreAuthorize("hasAuthority('CREATE_PROFESSOR')")
     public Professor saveProfessor(Professor professor) {
         return professorRepository.save(professor);
     }
 
     @Override
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @PreAuthorize("hasAuthority('READ_PROFESSOR')")
     public List<Professor> findAll() {
         List<Professor> result = new ArrayList<>();
         professorRepository.findAll().forEach(result::add);
@@ -33,11 +34,13 @@ public class ProfessorServiceImpl implements ProfessorService {
     }
 
     @Override
+    @PreAuthorize("hasAuthority('READ_PROFESSOR')")
     public Optional<Professor> findById(Integer id) {
         return professorRepository.findById(id);
     }
 
     @Override
+    @PreAuthorize("hasAuthority('DELETE_PROFESSOR')")
     public void deleteById(Integer id) {
         professorRepository.deleteById(id);
     }

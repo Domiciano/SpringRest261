@@ -3,6 +3,7 @@ package edu.co.icesi.introspringboot.service.impl;
 import edu.co.icesi.introspringboot.entity.Permission;
 import edu.co.icesi.introspringboot.repository.PermissionRepository;
 import edu.co.icesi.introspringboot.service.PermissionService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -19,11 +20,13 @@ public class PermissionServiceImpl implements PermissionService {
     }
 
     @Override
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public Permission save(Permission permission) {
         return permissionRepository.save(permission);
     }
 
     @Override
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public List<Permission> findAll() {
         List<Permission> result = new ArrayList<>();
         permissionRepository.findAll().forEach(result::add);
@@ -31,11 +34,13 @@ public class PermissionServiceImpl implements PermissionService {
     }
 
     @Override
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public Optional<Permission> findById(Integer id) {
         return permissionRepository.findById(id);
     }
 
     @Override
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public void deleteById(Integer id) {
         permissionRepository.deleteById(id);
     }

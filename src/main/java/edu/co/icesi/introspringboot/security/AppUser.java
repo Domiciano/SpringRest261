@@ -1,6 +1,8 @@
 package edu.co.icesi.introspringboot.security;
 
+import edu.co.icesi.introspringboot.entity.RolePermission;
 import edu.co.icesi.introspringboot.entity.User;
+import edu.co.icesi.introspringboot.entity.UserRole;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -23,7 +25,11 @@ public class AppUser implements UserDetails {
             SimpleGrantedAuthority grantedAuthority = new SimpleGrantedAuthority(authority);
             authorities.add(grantedAuthority);
         }
-        //TODO: Agregar los permissions a la lista de authorities
+        for (UserRole userRole : user.getUserRoles()) {
+            for (RolePermission rp : userRole.getRole().getRolePermissions()) {
+                authorities.add(new SimpleGrantedAuthority(rp.getPermission().getName()));
+            }
+        }
     }
 
     @Override

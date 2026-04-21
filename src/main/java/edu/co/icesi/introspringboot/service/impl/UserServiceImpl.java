@@ -4,8 +4,8 @@ import edu.co.icesi.introspringboot.entity.User;
 import edu.co.icesi.introspringboot.repository.UserRepository;
 import edu.co.icesi.introspringboot.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -28,12 +28,15 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User save(User user) {
-        String encodedPass = encoder.encode(user.getPassword());
-        user.setPassword(encodedPass);
+        if (userRepository.existsByUsername(user.getUsername())) {
+            throw new IllegalArgumentException("El usuario '" + user.getUsername() + "' ya existe");
+        }
+        user.setPassword(encoder.encode(user.getPassword()));
         return userRepository.save(user);
     }
 
     @Override
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public List<User> findAll() {
         List<User> result = new ArrayList<>();
         userRepository.findAll().forEach(result::add);
@@ -41,11 +44,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public Optional<User> findById(Integer id) {
         return userRepository.findById(id);
     }
 
     @Override
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public void deleteById(Integer id) {
         userRepository.deleteById(id);
     }
