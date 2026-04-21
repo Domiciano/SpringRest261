@@ -1,12 +1,14 @@
 package edu.co.icesi.introspringboot.security;
 
 
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -30,7 +32,7 @@ public class WebSecurityConfig {
     @Order(1)
     @Bean
     public SecurityFilterChain h2SecurityFilterChain(HttpSecurity http) throws Exception {
-       //CSRF
+        //CSRF
         http
                 .securityMatcher(toH2Console())
                 .authorizeHttpRequests(auth -> auth
@@ -44,6 +46,11 @@ public class WebSecurityConfig {
                 );
         return http.build();
     }
+
+
+    //RestAPI
+
+
 
     //MVC
     @Order(2)
@@ -68,9 +75,5 @@ public class WebSecurityConfig {
                 );
         return http.build();
     }
-
-    //RestAPI
-
-
 
 }
