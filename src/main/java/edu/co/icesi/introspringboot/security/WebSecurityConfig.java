@@ -17,7 +17,7 @@ import static org.springframework.boot.autoconfigure.security.servlet.PathReques
 
 @Configuration
 @EnableWebSecurity
-@EnableMethodSecurity
+//@EnableMethodSecurity
 public class WebSecurityConfig {
 
     //1. Manager de users
@@ -49,11 +49,24 @@ public class WebSecurityConfig {
 
 
     //RestAPI
-
-
+    @Order(2)
+    @Bean
+    public SecurityFilterChain apiSecurityFilterChain(HttpSecurity http) throws Exception {
+        http
+                .securityMatcher("/api/**")
+                .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/api/v1/courses/**").permitAll()
+                )
+                .csrf( csrf -> csrf.disable())
+                .sessionManagement(
+                        manager ->
+                                manager.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                );
+                return http.build();
+    }
 
     //MVC
-    @Order(2)
+    @Order(3)
     @Bean
     public SecurityFilterChain MVCSecurityFilterChain(HttpSecurity http) throws Exception {
         http
