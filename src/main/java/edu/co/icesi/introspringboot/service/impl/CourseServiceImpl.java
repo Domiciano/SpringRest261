@@ -1,8 +1,12 @@
 package edu.co.icesi.introspringboot.service.impl;
 
+import edu.co.icesi.introspringboot.api.v1.dto.CourseRequest;
+import edu.co.icesi.introspringboot.api.v1.dto.CourseResponse;
+import edu.co.icesi.introspringboot.api.v1.mappers.CourseMapper;
 import edu.co.icesi.introspringboot.entity.Course;
 import edu.co.icesi.introspringboot.repository.CourseRepository;
 import edu.co.icesi.introspringboot.service.CourseService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -14,6 +18,9 @@ import java.util.List;
 
 @Service
 public class CourseServiceImpl implements CourseService {
+
+    @Autowired
+    private CourseMapper courseMapper;
 
     private final CourseRepository courseRepository;
 
@@ -60,5 +67,22 @@ public class CourseServiceImpl implements CourseService {
     @PreAuthorize("hasAuthority('DELETE_COURSE')")
     public void deleteById(Integer id) {
         courseRepository.deleteById(id);
+    }
+
+    @Override
+    public List<CourseResponse> getAllCoursesAPI() {
+        //Entity -> DTO
+        List<CourseResponse> output =  courseRepository.findAll().stream().map(
+                entity -> courseMapper.toDTO(entity)
+        ).toList();
+        return output;
+    }
+
+    @Override
+    public void saveAPI(CourseRequest course) {
+        Course entity = courseMapper.toEntity(course);
+        System.out.println(entity.getName());
+        System.out.println(entity.getProfessor().getId());
+        courseRepository.save(entity);
     }
 }

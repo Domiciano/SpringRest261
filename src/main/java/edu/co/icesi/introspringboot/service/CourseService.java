@@ -1,5 +1,7 @@
 package edu.co.icesi.introspringboot.service;
 
+import edu.co.icesi.introspringboot.api.v1.dto.CourseRequest;
+import edu.co.icesi.introspringboot.api.v1.dto.CourseResponse;
 import edu.co.icesi.introspringboot.entity.Course;
 import org.springframework.data.domain.Page;
 
@@ -20,4 +22,10 @@ public interface CourseService {
     Course save(Course course);
 
     void deleteById(Integer id);
+
+
+    //API
+    List<CourseResponse> getAllCoursesAPI();
+    void saveAPI(CourseRequest course);
+
 }

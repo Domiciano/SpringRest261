@@ -1,5 +1,7 @@
 package edu.co.icesi.introspringboot.api.v1;
 
+import edu.co.icesi.introspringboot.api.v1.dto.CourseRequest;
+import edu.co.icesi.introspringboot.api.v1.dto.CourseResponse;
 import edu.co.icesi.introspringboot.entity.Course;
 import edu.co.icesi.introspringboot.repository.CourseRepository;
 import edu.co.icesi.introspringboot.service.CourseService;
@@ -8,7 +10,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
+
+//GET, POST, PUT, PATCH, DELETE
 @RestController
 @RequestMapping("/api/v1/courses")
 public class CourseRestController {
@@ -18,7 +23,7 @@ public class CourseRestController {
 
     @GetMapping
     public ResponseEntity<?> getCourses() {
-        List<Course> courses = courseService.getAllCourses();
+        List<CourseResponse> courses = courseService.getAllCoursesAPI();
         return ResponseEntity
                 .status(200)
                 .header(
@@ -39,9 +44,11 @@ public class CourseRestController {
     }
     */
     @PostMapping
-    public ResponseEntity<?> saveCourse(@RequestBody Course course) {
+    public ResponseEntity<?> saveCourse(
+            @RequestBody CourseRequest course
+    ) {
         try{
-            courseService.save(course);
+            courseService.saveAPI(course);
             return ResponseEntity.status(201).build();
         }catch (Exception e){
             return ResponseEntity.status(400).build();
