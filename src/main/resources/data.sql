@@ -49,7 +49,7 @@ INSERT INTO role_permission (role_id, permission_id) VALUES (1, 10);
 INSERT INTO role_permission (role_id, permission_id) VALUES (1, 11);
 INSERT INTO role_permission (role_id, permission_id) VALUES (1, 12);
 INSERT INTO role_permission (role_id, permission_id) VALUES (1, 13);
-INSERT INTO role_permission (role_id, permission_id) VALUES (1, 14);
+--INSERT INTO role_permission (role_id, permission_id) VALUES (1, 14);
 INSERT INTO role_permission (role_id, permission_id) VALUES (1, 15);
 INSERT INTO role_permission (role_id, permission_id) VALUES (1, 16);
 

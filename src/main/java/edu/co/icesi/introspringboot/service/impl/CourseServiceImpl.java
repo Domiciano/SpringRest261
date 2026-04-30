@@ -70,6 +70,7 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
+    @PreAuthorize("hasAnyAuthority('READ_COURSE')")
     public List<CourseResponse> getAllCoursesAPI() {
         //Entity -> DTO
         List<CourseResponse> output =  courseRepository.findAll().stream().map(
